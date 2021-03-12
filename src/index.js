@@ -1,15 +1,17 @@
 module.exports = function check(str, bracketsConfig) {
   let stack = [];
   for (let i = 0; i < str.length; i++) {
-    let char = str[i];
-    if (char === '(' || char === '[' || char === '{')
-      stack.push(char);
+    
+    if (str[i] === '(' || str[i] === '[' || str[i] === '{')
+      stack.push(str[i]);
       else {
-        if (char === ')' && stack.pop() !== '('
-            || char === ']' && stack.pop() !== '['
-            || char === '}' && stack.pop() !== '{')
+        if (str[i] === ')' && stack.pop() !== '('
+            || str[i] === ']' && stack.pop() !== '['
+            || str[i] === '}' && stack.pop() !== '{')
             return false;
       }
   }
-  return stack.length === 0;
+  return stack.length ? false : true;
+
 }
+
